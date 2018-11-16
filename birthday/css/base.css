@@ -106,7 +106,7 @@ body {
   text-align: center;
   font-size: 5vw;
   font-weight: bold;
-  padding-top: 50%;
+  padding-top: calc(50vh - 5vw);
 }
 .loading.inactive {
   display: none;
