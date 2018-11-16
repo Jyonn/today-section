@@ -1,0 +1,370 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  align-items: center;
+  height: 100%;
+  margin: 0;
+}
+div.bg-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+div.full {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.img-fit {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: inherit;
+}
+div.grid-container {
+  position: relative;
+  margin-left: 300px;
+}
+div.bg-c-0 {
+  background: #889A96;
+}
+div.bg-c-1 {
+  background: #BDC73B;
+}
+div.bg-c-2 {
+  background: #1EA74E;
+}
+div.bg-c-3 {
+  background: #853CC3;
+}
+div.bg-c-4 {
+  background: #408F9A;
+}
+div.bg-c-5 {
+  background: #D5628E;
+}
+div.bg-c-6 {
+  background: #5173B4;
+}
+div.bg-c-7 {
+  background: #CE5C47;
+}
+div.bg-c-8 {
+  background: #82B92B;
+}
+div.bg-c-9 {
+  background: #0C6B81;
+}
+div.bg-c-10 {
+  background: #51526F;
+}
+div.bg-c-11 {
+  background: #4D454B;
+}
+div.bg-c-12 {
+  background: #2195B1;
+}
+div.bg-c-13 {
+  background: #1C3C35;
+}
+div.bg-c-14 {
+  background: #EAC219;
+}
+div.bg-c-15 {
+  background: #F2861A;
+}
+div.grid-container div.btn-box {
+  position: absolute;
+  bottom: 0;
+  right: 100%;
+  width: fit-content;
+}
+div.grid-container div.btn-box div.btn-name {
+  color: white;
+  text-align: right;
+  margin-right: 30px;
+}
+div.grid-container div.btn-box div.btn-name span {
+  margin-left: 10px;
+}
+div.grid-container div.btn-box div.btn-l-1 {
+  font-size: 22px;
+  font-weight: bold;
+}
+div.grid-container div.btn-box div.btn-l-2 {
+  font-size: 18px;
+  font-weight: normal;
+}
+div.grid-container div.btn-box div.btn-l-3 {
+  font-size: 16px;
+}
+div.grid-container div.btn-box div.btn-l-4 {
+  font-size: 14px;
+}
+div.grid-container div.btn-box div.btn-son-list {
+  margin-right: 30px;
+  transition: 0.2s;
+  overflow: hidden;
+}
+div.grid-container div.btn-box div.btn-son-list.inactive {
+  height: 0;
+}
+div.grid-container div.btn-box div.btn-son-list.active {
+  height: auto;
+}
+div.smart-grid {
+  position: absolute;
+  transition: 0.5s;
+}
+div.smart-grid:hover {
+  z-index: 2;
+  margin-top: -20px;
+  margin-left: -20px;
+  box-shadow: 1px 3px 10px 0 gray;
+}
+div.smart-grid div.cover {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  transition: 0.2s;
+  z-index: 1;
+}
+div.smart-grid div.cover:hover {
+  z-index: 2;
+}
+div.smart-grid div.cover.active {
+  width: calc(100% - 2 * 4px);
+  height: calc(100% - 2 * 4px);
+}
+div.smart-grid div.content {
+  position: absolute;
+  margin: 14px 15px;
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+div.smart-grid.t-music div.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div.smart-grid.t-music div.content div.author-rname {
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  bottom: 0;
+  left: 0;
+  font-size: 18px;
+}
+div.smart-grid.t-music div.content div.buttons {
+  display: inherit;
+}
+div.smart-grid.t-music div.content div.buttons span.icon {
+  font-size: 48px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: 0.5s;
+  margin: 0 37px;
+}
+div.smart-grid.t-music div.content div.buttons span.icon:hover {
+  color: #ffffff;
+}
+div.smart-grid.t-article div.content div.foot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+div.smart-grid.t-article div.content div.foot div.rname {
+  font-size: 18px;
+  color: white;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  width: 100%;
+  border-left: 3px solid white;
+  padding-left: 5px;
+}
+div.smart-grid.t-article div.content div.foot div.author {
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+div.grid-1x1 {
+  width: 250px;
+  height: 250px;
+}
+div.grid-1x1:hover {
+  width: 290px;
+  height: 290px;
+}
+div.grid-1x2 {
+  width: 250px;
+  height: 500px;
+}
+div.grid-1x2:hover {
+  width: 290px;
+  height: 540px;
+}
+div.grid-2x1 {
+  width: 500px;
+  height: 250px;
+}
+div.grid-2x1:hover {
+  width: 540px;
+  height: 290px;
+}
+div.grid-3x1 {
+  width: 750px;
+  height: 250px;
+}
+div.grid-3x1:hover {
+  width: 790px;
+  height: 290px;
+}
+div.grid-2x2 {
+  width: 500px;
+  height: 500px;
+}
+div.grid-2x2:hover {
+  width: 540px;
+  height: 540px;
+}
+div.grid-1x1.t-music div.cover.inactive {
+  width: calc(36% - 2 * 4px);
+  height: calc(36% - 2 * 4px);
+  border-radius: 0 0 100% 0;
+}
+div.grid-1x1.t-music div.content {
+  top: 0;
+  left: 0;
+  width: calc(100% - 2 * 15px);
+  height: calc(100% - 2 * 14px);
+}
+div.grid-1x2.t-music div.cover.inactive {
+  width: calc(100% - 2 * 4px);
+  height: calc(83% - 2 * 4px);
+}
+div.grid-1x2.t-music div.content {
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 2 * 15px);
+  height: calc(17% - 2 * 14px);
+}
+div.grid-2x1.t-music div.cover.inactive {
+  width: calc(50% - 2 * 4px);
+  height: calc(100% - 2 * 4px);
+}
+div.grid-2x1.t-music div.content {
+  top: 0;
+  left: 50%;
+  width: calc(50% - 2 * 15px);
+  height: calc(100% - 2 * 14px);
+}
+div.grid-3x1.t-music div.cover.inactive {
+  width: calc(33.33% - 2 * 4px);
+  height: calc(100% - 2 * 4px);
+}
+div.grid-3x1.t-music div.content {
+  top: 0;
+  left: 33.33%;
+  width: calc(66.67% - 2 * 15px);
+  height: calc(100% - 2 * 14px);
+}
+div.grid-2x2.t-music div.cover.inactive {
+  width: calc(100% - 2 * 4px);
+  height: calc(50% - 2 * 4px);
+}
+div.grid-2x2.t-music div.content {
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 2 * 15px);
+  height: calc(50% - 2 * 4px);
+}
+div.grid-1x1.t-music div.content div.buttons span.icon-l-like,
+div.grid-1x2.t-music div.content div.buttons span.icon-l-like,
+div.grid-2x1.t-music div.content div.buttons span.icon-l-like,
+div.grid-1x1.t-music div.content div.buttons span.icon-l-share,
+div.grid-1x2.t-music div.content div.buttons span.icon-l-share,
+div.grid-2x1.t-music div.content div.buttons span.icon-l-share,
+div.grid-1x1.t-music div.content div.buttons span.icon-s-like,
+div.grid-1x2.t-music div.content div.buttons span.icon-s-like,
+div.grid-2x1.t-music div.content div.buttons span.icon-s-like,
+div.grid-1x1.t-music div.content div.buttons span.s-share,
+div.grid-1x2.t-music div.content div.buttons span.s-share,
+div.grid-2x1.t-music div.content div.buttons span.s-share {
+  display: none;
+}
+div.grid-1x2.t-music div.content div.buttons span.icon-l-play,
+div.grid-1x2.t-music div.content div.buttons span.icon-l-pause,
+div.grid-1x2.t-music div.content div.buttons span.icon-s-play,
+div.grid-1x2.t-music div.content div.buttons span.icon-s-pause {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+}
+div.grid-1x1.t-article div.cover.inactive {
+  left: auto;
+  right: 4px;
+  width: calc(27.2% - 2 * 4px);
+  height: calc(27.2% - 2 * 4px);
+  border-radius: 50% 0 50% 50%;
+}
+div.grid-1x1.t-article div.cover.active {
+  left: auto;
+  right: 4px;
+  width: calc(100% - 2 * 4px);
+  height: calc(100% - 2 * 4px);
+}
+div.grid-1x1.t-article div.content {
+  top: 0;
+  left: 0;
+  width: calc(100% - 2 * 15px);
+  height: calc(100% - 2 * 14px);
+}
+div.grid-1x2.t-article div.cover.inactive {
+  width: calc(100% - 2 * 4px);
+  height: calc(78% - 2 * 4px);
+}
+div.grid-1x2.t-article div.content {
+  top: 0;
+  left: 0;
+  width: calc(100% - 2 * 15px);
+  height: calc(100% - 2 * 14px);
+}
+div.grid-2x1.t-article div.cover.inactive {
+  width: calc(100% - 2 * 4px);
+  height: calc(56% - 2 * 4px);
+}
+div.grid-2x1.t-article div.content {
+  top: 0;
+  left: 0;
+  width: calc(100% - 2 * 15px);
+  height: calc(100% - 2 * 14px);
+}
+div.grid-3x1.t-article div.cover.inactive {
+  width: calc(66.67% - 2 * 4px);
+  height: calc(100% - 2 * 4px);
+}
+div.grid-3x1.t-article div.content {
+  top: 0;
+  left: 66.67%;
+  width: calc(33.33% - 2 * 15px);
+  height: calc(100% - 2 * 14px);
+}
+div.grid-2x2.t-article div.cover.inactive {
+  width: calc(100% - 2 * 4px);
+  height: calc(78% - 2 * 4px);
+}
+div.grid-2x2.t-article div.content {
+  top: 0;
+  left: 0;
+  width: calc(100% - 2 * 15px);
+  height: calc(100% - 2 * 14px);
+}

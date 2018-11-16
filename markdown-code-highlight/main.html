@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Markdown Code Highlight</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="css/showdown.css">
+    <link rel="stylesheet" href="css/styles/atom-one-light.css">
+
+    <script type="text/javascript" src="js/dev.js"></script>
+    <script type="text/javascript" src="js/highlight.pack.js"></script>
+    <script type="text/javascript" src="js/showdown.js"></script>
+    <script type="text/javascript" src="js/md-in-one.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+    <markdown id="markdown-area"></markdown>
+</body>
+<script>
+    let markdownHandler = new MarkdownHandler({
+        markdownAreaId: 'markdown-area',
+        markdownText: dev_md_text,
+    });
+
+    let pres = document.getElementsByTagName('pre');
+    for (let i = 0; i < pres.length; i++) {
+        let codes = pres[i].getElementsByTagName('code');
+        for (let j = 0; j < codes.length; j++) {
+            hljs.highlightBlock(codes[j]);
+        }
+    }
+</script>
+</html>

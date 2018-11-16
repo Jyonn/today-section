@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" lang="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>生日快乐</title>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/base.css"/>
+    <script type="text/javascript" src="js/dev.js"></script>
+    <script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="js/music.js"></script>
+</head>
+<body>
+    <div class="full fit-body bg img-fit bg-blur" id="background"></div>
+    <div class="center-container">
+        <div class="cd-round bg img-fit inactive ptr" id="cd-round">
+            <div class="play img-fit"></div>
+        </div>
+        <div class="lyric-container" id="lyric-container"></div>
+    </div>
+    <div class="fit-body full loading" id="loading">正在加载(<span id="loading-text"></span>)</div>
+</body>
+<script type="text/javascript">
+    let musicHandler = new MusicHandler({
+        lyricContainerId: 'lyric-container',
+    });
+
+    Request.get('https://disk.6-79.cn/api/res/SgARFB-IrchKr-VF2y6m')
+        .then((body) => {
+            musicHandler.init({
+                lyricText: body.info.description,
+                musicUri: 'https://s.6-79.cn/' + body.info.res_str_id,
+                cdRoundBtn: 'cd-round',
+            });
+        });
+
+    Request.get('https://disk.6-79.cn/api/res/SgARFB-IrchKr-25FfEo')
+        .then((body) => {
+            let childList = body.child_list;
+            let count = childList.length;
+            let cdRound = document.getElementById('cd-round');
+            let background = document.getElementById('background');
+            let needLoad = count;
+            let loadingText = document.getElementById('loading-text');
+            let loading = document.getElementById('loading');
+
+            for (let index in childList) {
+                let img = new Image();
+                img.src = `https://s.6-79.cn/${childList[index].res_str_id}`;
+                img.onload = function () {
+                    needLoad--;
+                }
+            }
+
+            let interval = setInterval(function () {
+                console.log(needLoad);
+                loadingText.innerText = `${Math.floor((count - needLoad) / count * 100)}%`;
+                if (needLoad === 0) {
+                    window.clearInterval(interval);
+                    setInterval(changeBg, 5000);
+                    function changeBg() {
+                        let index = Math.floor(Math.random() * count);
+                        let imageUrl = `url("https://s.6-79.cn/${childList[index].res_str_id}")`;
+                        cdRound.style.backgroundImage = imageUrl;
+                        background.style.backgroundImage = imageUrl;
+                    }
+                    changeBg();
+                    deactivate(loading);
+                }
+            }, 1000);
+        })
+</script>
+</html>

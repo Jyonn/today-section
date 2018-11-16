@@ -1,0 +1,84 @@
+.lyric-container {
+  position: absolute;
+  top: 360px;
+  background: none;
+  height: 200px;
+  width: 100%;
+  overflow-y: hidden;
+  border: 20px solid rgba(0, 0, 0, 0);
+
+  //audio {
+  //  display: none;
+  //}
+
+  div.scroll-lyric-container {
+    box-sizing: border-box;
+    transition: 0.2s;
+
+    div {
+      text-align: center;
+      overflow-wrap: break-word;
+      word-wrap: break-word; // 向前兼容
+      transition: 0.5s;
+    }
+
+    div.inactive {
+      color: lightgrey;
+      font-size: 12px;
+    }
+
+    div.active {
+      color: white;
+      font-size: 13px;
+      font-weight: bold;
+      margin: 3px 0;
+    }
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0)
+  }
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+@cd-size: 200px;
+.cd-round {
+  position: absolute;
+  width: @cd-size;
+  height: @cd-size;
+  border: 10px solid grey;
+  border-radius: @cd-size / 2;
+  left: calc(~'50% - @{cd-size} / 2');
+  top: 20%;
+  animation: rotating 24s linear infinite;
+
+  @icon-size: 100px;
+  div.play {
+    width: @icon-size;
+    height: @icon-size;
+    background-image: url("../icon/play.png");
+    position: absolute;
+    left: calc(~'50% - @{icon-size} / 2');
+    top: calc(~'50% - @{icon-size} / 2');
+    transition: 0.2s;
+  }
+
+  transition: 0.2s;
+}
+
+.cd-round.active {
+  animation-play-state: running;
+  div.play {
+    display: none;
+  }
+}
+
+.cd-round.inactive {
+  animation-play-state: paused;
+  filter: brightness(0.7);
+  border-color: white;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dynamic Lyric</title>
+	<meta charset="UTF-8"/>
+    <link rel="stylesheet" href="css/main.css"/>
+	<script type="text/javascript" src="js/dev.js"></script>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script type="text/javascript" src="js/music.js"></script>
+</head>
+<body>
+	<div class="lyric-container" id="lyric-container"></div>
+</body>
+<script type="text/javascript">
+	let musicHandler = new MusicHandler({
+		lyricContainerId: 'lyric-container',
+	});
+	musicHandler.init({
+        lyricText: dev_res.body.info.description,
+        musicUri: 'https://disk.6-79.cn/s/1UHG4g',
+    });
+</script>
+</html>

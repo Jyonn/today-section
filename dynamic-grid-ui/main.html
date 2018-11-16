@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Grid UI</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="css/icon-font.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <script type="text/javascript" src="js/dev.js"></script>
+    <script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="js/smart-grid.js"></script>
+</head>
+<body style="display: flex;">
+    <div class="img-fit bg-image" style='background-image: url("assets/img/2.jpeg")'></div>
+    <div class="grid-container" id="grid-container">
+        <div class="btn-box" id="btn-box"></div>
+    </div>
+</body>
+<script>
+    let smartGrid = new SmartGrid({
+        gridRect: new Rect(3, 2),
+        gridContainerId: 'grid-container',
+    });
+    smartGrid.initGridContainer({
+        contentList: dev_res,
+    });
+
+    let multiLevelBtnTree = new MultiLevelButton({
+        multiLevelBtnTree: dev_btn_tree,
+        btnBox: document.getElementById('btn-box'),
+    })
+    //排序 名称 作者 时间 热度 类型
+    //编辑
+    //返回父目录
+    //搜索
+
+    //编辑时
+    //添加
+    //保存编辑
+    //取消编辑
+</script>
+</html>

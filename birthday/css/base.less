@@ -1,0 +1,145 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+@page-min-height: 500px;
+@page-min-width: 375px;
+body {
+  height: 100%;
+  min-height: @page-min-height;
+  overflow: scroll;
+  width: 100%;
+  min-width: @page-min-width;
+}
+
+@center-max-height: 700px;
+@center-max-width: 450px;
+.center-container {
+  position: absolute;
+  height: 100%;
+  min-height: @page-min-height;
+  max-height: @center-max-height;
+  width: 100%;
+  min-width: @page-min-width;
+  max-width: @center-max-width;
+  overflow: hidden;
+
+  div.mask {
+    filter: opacity(0.5) brightness(0.6);
+    background: white;
+  }
+}
+
+@media screen and (min-height: @center-max-height) {
+  @center-max-height-web: 700px;
+  .center-container {
+    height: @center-max-height-web;
+    top: calc(~'50% - @{center-max-height-web} / 2');
+  }
+}
+
+@media screen and (min-width: @center-max-width) {
+  @center-max-width-web: 375px;
+  .center-container {
+    width: @center-max-width-web;
+    left: calc(~'50% - @{center-max-width-web} / 2');
+  }
+}
+
+.full {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.full.fit-body {
+  min-height: @page-min-height;
+  min-width: @page-min-width;
+}
+
+.img-fit {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: inherit;
+}
+
+@bg-blur: 8px;
+.bg-blur {
+  position: absolute;
+  top: -@bg-blur;
+  left: -@bg-blur;
+  width: calc(~'100% + 2*@{bg-blur}');
+  height: calc(~'100% + 2*@{bg-blur}');
+  filter: brightness(70%) blur(@bg-blur);
+  background-color: black;
+}
+
+.img-random {
+  background-image: url("https://unsplash.6-79.cn/random/small?quick=1");
+}
+
+.center {
+  text-align: center;
+}
+
+@strong-color: gray;
+@light-color: @strong-color * 1.5;
+.light-shadow {
+  box-shadow: 1px 3px 10px 0 @light-color;
+}
+
+.strong-shadow {
+  box-shadow: 1px 3px 10px 0 @strong-color;
+}
+
+.animate {
+  transition: 0.2s;
+}
+
+.hover-strong {
+  //transition: 0.5s;
+  filter: opacity(0.4);
+  &:hover {
+    filter: opacity(1);
+  }
+}
+
+.ptr {
+  cursor: pointer;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.bg {
+  transition: 0.8s;
+}
+
+.loading {
+  background: linear-gradient(to bottom left, #bd3381, #ee583f);
+  color: white;
+  transition: 0.2s;
+  text-align: center;
+  font-size: 5vw;
+  font-weight: bold;
+  padding-top: 50%;
+}
+
+.loading.inactive {
+  display: none;
+}

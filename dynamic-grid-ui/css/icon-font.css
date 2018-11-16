@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'icon-line';
+    src:  url('../assets/font/flaticon-line.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'icon-solid';
+    src: url('../assets/font/flaticon-solid.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-s-"], [class*=" icon-s-"] {
+    font-family: 'icon-solid' !important;
+}
+
+[class^="icon-l-"], [class*=" icon-l-"] {
+    font-family: 'icon-line' !important;
+}
+
+.icon-l-like:before {content: "\f160";}
+.icon-s-like:before {content: "\f169";}
+
+.icon-l-pause:before {content: "\f183";}
+.icon-s-pause:before {content: "\f18a";}
+
+.icon-l-play:before {content: "\f189";}
+.icon-s-play:before {content: "\f190";}
+
+.icon-l-share:before {content: "\f19e";}
+.icon-s-share:before {content: "\f1a3";}
+
+.icon-l-sort:before {content: "\f1a4";}
+.icon-l-search:before {content: "\f19c";}
+.icon-l-back:before {content: "\f159";}
