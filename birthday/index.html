@@ -56,13 +56,14 @@
                 console.log(needLoad);
                 loadingText.innerText = `${Math.floor((count - needLoad) / count * 100)}%`;
                 if (needLoad === 0) {
+                    let index = Math.floor(Math.random() * count);
+                    background.style.backgroundImage = `url("https://s.6-79.cn/${childList[index].res_str_id}")`;
                     window.clearInterval(interval);
-                    setInterval(changeBg, 5000);
+                    setInterval(changeBg, 10000);
                     function changeBg() {
                         let index = Math.floor(Math.random() * count);
-                        let imageUrl = `url("https://s.6-79.cn/${childList[index].res_str_id}")`;
-                        cdRound.style.backgroundImage = imageUrl;
-                        background.style.backgroundImage = imageUrl;
+                        cdRound.style.backgroundImage = `url("https://s.6-79.cn/${childList[index].res_str_id}")`;
+                        // background.style.backgroundImage = imageUrl;
                     }
                     changeBg();
                     deactivate(loading);
