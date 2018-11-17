@@ -14,11 +14,15 @@
     <div class="full fit-body bg img-fit bg-blur" id="background"></div>
     <div class="center-container">
         <div class="cd-round bg img-fit inactive ptr" id="cd-round">
-            <div class="play img-fit"></div>
+            <!--<div class="play img-fit"></div>-->
+            <div class="inner-round-1 inner-round"></div>
+            <div class="inner-round-2 inner-round"></div>
+            <div class="inner-round-3 inner-round"></div>
+            <div class="inner-round-4 inner-round"></div>
         </div>
         <div class="lyric-container" id="lyric-container"></div>
     </div>
-    <div class="fit-body full loading" id="loading">正在加载(<span id="loading-text"></span>)</div>
+    <div class="fit-body full loading" id="loading">正在加载(<span id="loading-text">0%</span>)</div>
 </body>
 <script type="text/javascript">
     let musicHandler = new MusicHandler({
@@ -43,17 +47,18 @@
             let needLoad = count;
             let loadingText = document.getElementById('loading-text');
             let loading = document.getElementById('loading');
+            let imgList = [];
 
             for (let index in childList) {
                 let img = new Image();
                 img.src = `https://s.6-79.cn/${childList[index].res_str_id}`;
                 img.onload = function () {
                     needLoad--;
-                }
+                };
+                imgList.push(img);
             }
 
             let interval = setInterval(function () {
-                console.log(needLoad);
                 loadingText.innerText = `${Math.floor((count - needLoad) / count * 100)}%`;
                 if (needLoad === 0) {
                     let index = Math.floor(Math.random() * count);

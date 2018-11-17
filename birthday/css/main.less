@@ -50,11 +50,59 @@
   position: absolute;
   width: @cd-size;
   height: @cd-size;
-  border: 10px solid grey;
+  //border: 10px solid grey;
   border-radius: @cd-size / 2;
+  box-shadow: 0 0 3px #333,1px 1px 5px #888 !important;
   left: calc(~'50% - @{cd-size} / 2');
   top: 20%;
   animation: rotating 24s linear infinite;
+
+  div.inner-round {
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  @r1-size: 34px;
+  div.inner-round-1 {
+    width: @r1-size;
+    height: @r1-size;
+    background: white;
+    top: calc(~'50% - @{r1-size} / 2');
+    left: calc(~'50% - @{r1-size} / 2');
+    //top: 85px;
+    //left: 85px;
+  }
+
+  @r2-size: 56px;
+  div.inner-round-2 {
+    width: @r2-size;
+    height: @r2-size;
+    background: none;
+    top: calc(~'50% - @{r2-size} / 2');
+    left: calc(~'50% - @{r2-size} / 2');
+    //top: 70px;
+    //left: 70px;
+    border: 8px solid white;
+  }
+
+  @r3-size: 80px;
+  div.inner-round-3 {
+    width: @r3-size;
+    height: @r3-size;
+    background: rgba(255, 255, 255, 0.6);
+    top: calc(~'50% - @{r3-size} / 2');
+    left: calc(~'50% - @{r3-size} / 2');
+  }
+
+  @r4-size: 100px;
+  div.inner-round-4 {
+    width: @r4-size;
+    height: @r4-size;
+    background: none;
+    top: calc(~'50% - @{r4-size} / 2');
+    left: calc(~'50% - @{r4-size} / 2');
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
 
   @icon-size: 100px;
   div.play {
@@ -67,7 +115,7 @@
     transition: 1s;
   }
 
-  transition: 1s;
+  transition: 0.2s;
 }
 
 .cd-round.active {

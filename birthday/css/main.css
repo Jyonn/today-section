@@ -39,12 +39,46 @@
   position: absolute;
   width: 200px;
   height: 200px;
-  border: 10px solid grey;
   border-radius: 100px;
+  box-shadow: 0 0 3px #333,1px 1px 5px #888 !important;
   left: calc(50% - 200px / 2);
   top: 20%;
   animation: rotating 24s linear infinite;
-  transition: 1s;
+  transition: 0.2s;
+}
+.cd-round div.inner-round {
+  position: absolute;
+  border-radius: 50%;
+}
+.cd-round div.inner-round-1 {
+  width: 34px;
+  height: 34px;
+  background: white;
+  top: calc(50% - 34px / 2);
+  left: calc(50% - 34px / 2);
+}
+.cd-round div.inner-round-2 {
+  width: 56px;
+  height: 56px;
+  background: none;
+  top: calc(50% - 56px / 2);
+  left: calc(50% - 56px / 2);
+  border: 8px solid white;
+}
+.cd-round div.inner-round-3 {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.6);
+  top: calc(50% - 80px / 2);
+  left: calc(50% - 80px / 2);
+}
+.cd-round div.inner-round-4 {
+  width: 100px;
+  height: 100px;
+  background: none;
+  top: calc(50% - 100px / 2);
+  left: calc(50% - 100px / 2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 .cd-round div.play {
   width: 100px;
