@@ -22,7 +22,7 @@
         </div>
         <div class="lyric-container" id="lyric-container"></div>
     </div>
-    <div class="fit-body full loading" id="loading">正在加载(<span id="loading-text">0%</span>)</div>
+    <div class="fit-body full loading" id="loading">正在加载(<span id="loading-text">0%</span>)<div class="ptr show-any-way" id="show-any-way">加载不出来？点我直接显示</div></div>
 </body>
 <script type="text/javascript">
     let musicHandler = new MusicHandler({
@@ -48,6 +48,7 @@
             let loadingText = document.getElementById('loading-text');
             let loading = document.getElementById('loading');
             let imgList = [];
+            let showAnyWay = document.getElementById('show-any-way');
 
             for (let index in childList) {
                 let img = new Image();
@@ -74,6 +75,23 @@
                     deactivate(loading);
                 }
             }, 1000);
+
+            showAnyWay.addEventListener('click', function () {
+                window.clearInterval(interval);
+                needLoad = 0;
+                deactivate(loading);
+
+                let index = Math.floor(Math.random() * count);
+                background.style.backgroundImage = `url("https://s.6-79.cn/${childList[index].res_str_id}")`;
+                window.clearInterval(interval);
+                setInterval(changeBg, 10000);
+                function changeBg() {
+                    let index = Math.floor(Math.random() * count);
+                    cdRound.style.backgroundImage = `url("https://s.6-79.cn/${childList[index].res_str_id}")`;
+                    // background.style.backgroundImage = imageUrl;
+                }
+                changeBg();
+            });
         })
 </script>
 </html>
