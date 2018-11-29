@@ -29,7 +29,7 @@
         lyricContainerId: 'lyric-container',
     });
 
-    Request.get('https://disk.6-79.cn/api/res/SgARFB-IrchKr-VF2y6m')
+    Request.get('https://disk.6-79.cn/api/res/VF2y6m')
         .then((body) => {
             musicHandler.init({
                 lyricText: body.info.description,
@@ -38,7 +38,7 @@
             });
         });
 
-    Request.get('https://disk.6-79.cn/api/res/SgARFB-IrchKr-25FfEo')
+    Request.get('https://disk.6-79.cn/api/res/25FfEo')
         .then((body) => {
             let childList = body.child_list;
             let count = childList.length;
