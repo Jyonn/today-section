@@ -8,7 +8,7 @@ markdown h3,
 markdown h4,
 markdown h5,
 markdown h6 {
-  color: black;
+  color: black !important;
 }
 markdown a {
   color: #4484c2;

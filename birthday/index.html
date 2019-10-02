@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" lang="zh-CN">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>生日快乐</title>
+    <title></title>
     <link rel="stylesheet" href="css/main.css"/>
     <link rel="stylesheet" href="css/base.css"/>
     <script type="text/javascript" src="js/dev.js"></script>
@@ -29,16 +29,20 @@
         lyricContainerId: 'lyric-container',
     });
 
-    Request.get('https://disk.6-79.cn/api/res/VF2y6m')
+    let musicId = getQueryParam('music');
+    let coverId = getQueryParam('cover');
+
+    Request.get('https://disk.6-79.cn/api/res/' + musicId)
         .then((body) => {
             musicHandler.init({
                 lyricText: body.info.description,
                 musicUri: 'https://s.6-79.cn/' + body.info.res_str_id,
                 cdRoundBtn: 'cd-round',
+                title: body.info.rname,
             });
         });
 
-    Request.get('https://disk.6-79.cn/api/res/25FfEo')
+    Request.get('https://disk.6-79.cn/api/res/' + coverId)
         .then((body) => {
             let childList = body.child_list;
             let count = childList.length;

@@ -52,12 +52,15 @@ class MusicHandler {
         lyricText,
         musicUri,
 		cdRoundBtn,
+		title,
     }) {
 		this.cdRoundBtn = document.getElementById(cdRoundBtn);
         this.lyricText = lyricText;
         this.lyricSequence = new LyricSequence();
         this.musicUri = musicUri;
         this.activeIndex = -1;
+        this.title = document.getElementsByTagName('title')[0];
+        this.title.text = title;
 
         this.splitLyric();
         this.initLyricContainer();
