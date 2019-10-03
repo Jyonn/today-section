@@ -86,7 +86,7 @@ class Request {
         }
         return req.json().then((resp) => {
             if (resp.code !== 0) {
-            InfoCenter.push(new Info(resp.msg, Info.TYPE_ERROR));
+            // InfoCenter.push(new Info(resp.msg, Info.TYPE_ERROR));
             return ErrorHandler.handler(resp);
         }
         return resp.body;
