@@ -22,6 +22,7 @@
         </div>
         <div class="lyric-container" id="lyric-container"></div>
     </div>
+    <div class="fit-body full img-fit loading-bg" id="loading-bg"></div>
     <div class="fit-body full loading" id="loading">正在加载(<span id="loading-text">0%</span>)<div class="ptr show-any-way" id="show-any-way">加载不出来？点我直接显示</div></div>
 </body>
 <script type="text/javascript">
@@ -32,6 +33,63 @@
     let musicId = getQueryParam('music');
     let coverId = getQueryParam('cover');
 
+    let cdRound = document.getElementById('cd-round');
+    let background = document.getElementById('background');
+    let loadingText = document.getElementById('loading-text');
+    let loading = document.getElementById('loading');
+    let loadingBg = document.getElementById('loading-bg');
+    let showAnyWay = document.getElementById('show-any-way');
+
+    function loadImages(imageList) {
+        let imageJar = [];
+        let count = imageList.length;
+        let needLoad = count;
+
+        for (let index = 0; index < imageList.length; index ++) {
+            let img = new Image();
+            img.src = imageList[index];
+            img.onload = function () {
+                needLoad--;
+            };
+            imageJar.push({url: img.src, image: img});
+        }
+
+        let interval = setInterval(function () {
+            loadingText.innerText = `${Math.floor((count - needLoad) / count * 100)}%`;
+            if (needLoad === 0) {
+                let index = Math.floor(Math.random() * count);
+                background.style.backgroundImage = `url("${imageJar[index].url}")`;
+                window.clearInterval(interval);
+                setInterval(changeBg, 10000);
+                function changeBg() {
+                    let index = Math.floor(Math.random() * count);
+                    cdRound.style.backgroundImage = `url("${imageJar[index].url}")`;
+                }
+                changeBg();
+                deactivate(loading);
+                deactivate(loadingBg);
+            }
+        }, 1000);
+
+        showAnyWay.addEventListener('click', function () {
+            window.clearInterval(interval);
+            needLoad = 0;
+            deactivate(loading);
+            deactivate(loadingBg);
+
+            let index = Math.floor(Math.random() * count);
+            background.style.backgroundImage = `url("${imageJar[index].url}")`;
+            window.clearInterval(interval);
+            setInterval(changeBg, 10000);
+            function changeBg() {
+                let index = Math.floor(Math.random() * count);
+                cdRound.style.backgroundImage = `url("${imageJar[index].url}")`;
+                // background.style.backgroundImage = imageUrl;
+            }
+            changeBg();
+        });
+    }
+
     Request.get('https://disk.6-79.cn/api/res/' + musicId)
         .then((body) => {
             musicHandler.init({
@@ -40,62 +98,23 @@
                 cdRoundBtn: 'cd-round',
                 title: body.info.rname,
             });
-        });
 
-    Request.get('https://disk.6-79.cn/api/res/' + coverId)
-        .then((body) => {
-            let childList = body.child_list;
-            let count = childList.length;
-            let cdRound = document.getElementById('cd-round');
-            let background = document.getElementById('background');
-            let needLoad = count;
-            let loadingText = document.getElementById('loading-text');
-            let loading = document.getElementById('loading');
-            let imgList = [];
-            let showAnyWay = document.getElementById('show-any-way');
+            if (coverId) {
+                Request.get('https://disk.6-79.cn/api/res/' + coverId)
+                    .then((body) => {
+                        let childList = body.child_list;
+                        let imageList = [];
 
-            for (let index in childList) {
-                let img = new Image();
-                img.src = `https://s.6-79.cn/${childList[index].res_str_id}`;
-                img.onload = function () {
-                    needLoad--;
-                };
-                imgList.push(img);
+                        for (let index in childList) {
+                            if (childList[index].sub_type === 1) {
+                                imageList.push(`https://s.6-79.cn/${childList[index].res_str_id}`);
+                            }
+                        }
+                        loadImages(imageList);
+                    })
+            } else {
+                loadImages([body.info.cover || 'https://unsplash.6-79.cn/random?quick=1'])
             }
-
-            let interval = setInterval(function () {
-                loadingText.innerText = `${Math.floor((count - needLoad) / count * 100)}%`;
-                if (needLoad === 0) {
-                    let index = Math.floor(Math.random() * count);
-                    background.style.backgroundImage = `url("https://s.6-79.cn/${childList[index].res_str_id}")`;
-                    window.clearInterval(interval);
-                    setInterval(changeBg, 10000);
-                    function changeBg() {
-                        let index = Math.floor(Math.random() * count);
-                        cdRound.style.backgroundImage = `url("https://s.6-79.cn/${childList[index].res_str_id}")`;
-                        // background.style.backgroundImage = imageUrl;
-                    }
-                    changeBg();
-                    deactivate(loading);
-                }
-            }, 1000);
-
-            showAnyWay.addEventListener('click', function () {
-                window.clearInterval(interval);
-                needLoad = 0;
-                deactivate(loading);
-
-                let index = Math.floor(Math.random() * count);
-                background.style.backgroundImage = `url("https://s.6-79.cn/${childList[index].res_str_id}")`;
-                window.clearInterval(interval);
-                setInterval(changeBg, 10000);
-                function changeBg() {
-                    let index = Math.floor(Math.random() * count);
-                    cdRound.style.backgroundImage = `url("https://s.6-79.cn/${childList[index].res_str_id}")`;
-                    // background.style.backgroundImage = imageUrl;
-                }
-                changeBg();
-            });
-        })
+        });
 </script>
 </html>
