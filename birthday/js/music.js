@@ -81,6 +81,15 @@ class MusicHandler {
         })
 	}
 
+	static timeLyricResultToNumber(timeLyricResult) {
+		let seconds = parseInt(timeLyricResult[1]) * 60 + parseInt(timeLyricResult[2]);
+		let milliseconds = parseInt(timeLyricResult[3]);
+		for (let i = 0; i < timeLyricResult[3].length; i++) {
+			milliseconds /= 10;
+		}
+		return seconds + milliseconds;
+	}
+
 	splitTimeLyric(rawLyricLine) {
 		let timeRegex = /\[(\d+):(\d+).(\d+)]/g;
 		let timeList = [];
@@ -89,14 +98,10 @@ class MusicHandler {
 		do {
 		    timeRegex.lastIndex = 0; // 每次检索前要把lastIndex置零 http://www.w3school.com.cn/jsref/jsref_exec_regexp.asp
 			timeLyricResult = timeRegex.exec(lyricLine);
-			// console.log(timeLyricResult);
 			if (timeLyricResult === null)
 				break;
-			timeList.push(parseInt(timeLyricResult[1]) * 60 +
-				parseInt(timeLyricResult[2]) +
-				parseInt(timeLyricResult[3]) / 100);
+			timeList.push(MusicHandler.timeLyricResultToNumber(timeLyricResult));
             lyricLine = lyricLine.substr(timeLyricResult[0].length);
-            // console.log(lyricLine);
         } while (1);
         if (timeList.length)
             this.lyricSequence.insert(timeList, lyricLine);
