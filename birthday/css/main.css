@@ -16,6 +16,7 @@
   overflow-wrap: break-word;
   word-wrap: break-word;
   transition: 0.5s;
+  white-space: pre-wrap;
 }
 .lyric-container div.scroll-lyric-container div.inactive {
   color: lightgrey;

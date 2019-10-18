@@ -5,7 +5,10 @@ class LyricSequence {
 	}
 
 	insert(timeList, lyricLine) {
-		let index = this.lyric.push(lyricLine) - 1;
+		let index = this.lyric.indexOf(lyricLine);
+		if (index === -1) {
+			index = this.lyric.push(lyricLine) - 1;
+		}
 		timeList.forEach((time) => {
 			this.sequence.push({time: time, index: index});
 		});

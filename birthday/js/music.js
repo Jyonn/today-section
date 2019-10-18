@@ -5,7 +5,13 @@ class LyricSequence {
 	}
 
 	insert(timeList, lyricLine) {
-		let index = this.lyric.push(lyricLine) - 1;
+		if (!lyricLine || !lyricLine.length) {
+			lyricLine = ' ';
+		}
+		let index = this.lyric.indexOf(lyricLine);
+		if (index === -1) {
+			index = this.lyric.push(lyricLine) - 1;
+		}
 		timeList.forEach((time) => {
 			this.sequence.push({time: time, index: index});
 		});
@@ -82,12 +88,12 @@ class MusicHandler {
 	}
 
 	static timeLyricResultToNumber(timeLyricResult) {
-		let seconds = parseInt(timeLyricResult[1]) * 60 + parseInt(timeLyricResult[2]);
-		let milliseconds = parseInt(timeLyricResult[3]);
-		for (let i = 0; i < timeLyricResult[3].length; i++) {
-			milliseconds /= 10;
-		}
-		return seconds + milliseconds;
+		return parseInt(timeLyricResult[1]) * 60 + parseFloat(timeLyricResult[2] + '.' + timeLyricResult[3]);
+		// let milliseconds = parseInt(timeLyricResult[3]);
+		// for (let i = 0; i < timeLyricResult[3].length; i++) {
+		// 	milliseconds /= 10;
+		// }
+		// return seconds + milliseconds;
 	}
 
 	splitTimeLyric(rawLyricLine) {
@@ -135,25 +141,24 @@ class MusicHandler {
     }
 
     createInterval() {
-	    let _this = this;
 	    let containerHeight = this.lyricContainer.offsetHeight;
 
-	    setInterval(function () {
-	        let currentTime = _this.audio.currentTime;
-            let index = _this.lyricSequence.find(currentTime);
-            if (_this.activeIndex === index)
+	    setInterval( () => {
+	        let currentTime = this.audio.currentTime;
+            let index = this.lyricSequence.find(currentTime);
+            if (this.activeIndex === index)
                 return;
-            if (_this.activeIndex > -1)
-                deactivate(_this.divList[_this.activeIndex]);
+            if (this.activeIndex > -1)
+                deactivate(this.divList[this.activeIndex]);
             if (index > -1)
-                activate(_this.divList[index]);
-            _this.activeIndex = index;
+                activate(this.divList[index]);
+            this.activeIndex = index;
 
             let marginTop = containerHeight / 2 -
-                _this.divList[_this.activeIndex].offsetTop +
-                _this.scrollLyricContainer.offsetTop -
-                _this.divList[_this.activeIndex].offsetHeight / 2;
-            _this.scrollLyricContainer.style.marginTop = marginTop + 'px';
+                this.divList[this.activeIndex].offsetTop +
+                this.scrollLyricContainer.offsetTop -
+                this.divList[this.activeIndex].offsetHeight / 2;
+            this.scrollLyricContainer.style.marginTop = marginTop + 'px';
         }, 100);
     }
 
