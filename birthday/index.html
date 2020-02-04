@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta itemprop="name" id="share-name" content=""/>
     <meta itemprop="image" id="share-image" content=""/>
+    <meta property="og:title" id="share-og-title" content="" />
+    <meta itemprop="og:image" id="share-og-image" content=""/>
+    <meta name="description" id="share-desc" content="" />
     <title></title>
     <link rel="stylesheet" href="css/main.css"/>
     <link rel="stylesheet" href="css/base.css"/>
@@ -44,6 +47,9 @@
 
     let shareName = document.getElementById('share-name');
     let shareImage = document.getElementById('share-image');
+    let shareOgTitle = document.getElementById('share-og-title');
+    let shareOgImage = document.getElementById('share-og-image');
+    let shareDesc = document.getElementById('share-desc');
 
     function loadImages(imageList) {
         let imageJar = [];
@@ -51,6 +57,7 @@
         let needLoad = count;
 
         shareImage.setAttribute('content', imageList[0]);
+        shareOgImage.setAttribute('content', imageList[0]);
 
         for (let index = 0; index < imageList.length; index ++) {
             let img = new Image();
@@ -106,6 +113,8 @@
                 title: body.info.rname,
             });
             shareName.setAttribute('content', body.info.rname);
+            shareOgTitle.setAttribute('content', body.info.rname);
+            shareDesc.setAttribute('content', body.info.rname);
 
             if (coverId) {
                 Request.get('https://disk.6-79.cn/api/res/' + coverId)
