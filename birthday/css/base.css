@@ -16,6 +16,7 @@ body {
   overflow: scroll;
   width: 100%;
   min-width: 375px;
+  position: fixed;
 }
 .center-container {
   position: absolute;
@@ -62,11 +63,11 @@ body {
 }
 .bg-blur {
   position: absolute;
-  top: -8px;
-  left: -8px;
-  width: calc(100% + 2*8px);
-  height: calc(100% + 2*8px);
-  filter: brightness(70%) blur(8px);
+  top: -40px;
+  left: -40px;
+  width: calc(100% + 2*40px);
+  height: calc(100% + 2*40px);
+  filter: brightness(60%) blur(40px);
   background-color: black;
 }
 .img-random {

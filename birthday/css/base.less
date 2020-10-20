@@ -21,6 +21,7 @@ body {
   overflow: scroll;
   width: 100%;
   min-width: @page-min-width;
+  position: fixed;
 }
 
 @center-max-height: 700px;
@@ -77,14 +78,14 @@ body {
   display: inherit;
 }
 
-@bg-blur: 8px;
+@bg-blur: 40px;
 .bg-blur {
   position: absolute;
   top: -@bg-blur;
   left: -@bg-blur;
   width: calc(~'100% + 2*@{bg-blur}');
   height: calc(~'100% + 2*@{bg-blur}');
-  filter: brightness(70%) blur(@bg-blur);
+  filter: brightness(60%) blur(@bg-blur);
   background-color: black;
 }
 
