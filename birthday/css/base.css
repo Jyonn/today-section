@@ -101,7 +101,7 @@ body {
   transition: 0.8s;
 }
 .loading-bg {
-  background-image: url("../image/bg.png");
+  background-image: url("https://cdn.jjparadise.com/cdn/images/index/bg-m.jpg");
   filter: brightness(0.7);
 }
 .loading-bg.inactive {
